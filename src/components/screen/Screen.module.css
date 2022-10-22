@@ -1,4 +1,12 @@
 .screenBlock {
     height: 15vh;
     background-color: #2b2e47;
+    display: flex;
+    justify-content: flex-end;
+}
+
+span {
+    color: white;
+    font-size: 70px;
+    padding-top: 65px;
 }
