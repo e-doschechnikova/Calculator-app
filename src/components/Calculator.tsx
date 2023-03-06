@@ -37,11 +37,11 @@ export const Calculator = () => {
     <div className={style.calculatorBlock}>
       <div className={style.calculatorContainer}>
         <Screen value={calculator} />
-        <div className={style.buttonsContainer}>
+        {/* <div className={style.buttonsContainer}>
           {valueButton.map((btn) => {
             return <Button value={btn} callback={onChangeValueHandler} />;
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
