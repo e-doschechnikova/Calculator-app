@@ -4,21 +4,58 @@ import "./App.scss";
 
 const App = () => {
   const [value, setValue] = useState<string>("0");
+  const [memory, setMemory] = useState<number | null>(null);
+  const [operator, setOperator] = useState<string | null>(null);
 
   const handleButtonPress = (content: any) => () => {
     // console.log("value", value);
     const num = parseFloat(value);
 
-    if (content === "AC") {
-      setValue("0");
-      return;
-    }
-    if (content === "±") {
-      setValue((num * -1).toString());
-      return;
-    }
-
     setValue(parseFloat(num + content).toString());
+
+    switch (content) {
+      // function
+      case "AC":
+        setValue("0");
+        setMemory(null);
+        setOperator(null);
+        break;
+      case "±":
+        setValue((num * -1).toString());
+        setOperator("+");
+        break;
+      case "%":
+        setValue((num / 100).toString());
+        setMemory(null);
+        setOperator(null);
+        break;
+      // operator
+      case "÷":
+        setMemory(parseFloat(value));
+        setValue("0");
+        break;
+      case "×":
+        setMemory(parseFloat(value));
+        setValue("0");
+        break;
+      case "−":
+        setMemory(parseFloat(value));
+        setValue("0");
+        break;
+      case "+":
+        setMemory(parseFloat(value));
+        setValue("0");
+        break;
+      case "=":
+        setMemory(null);
+        setOperator(null);
+        break;
+      // other
+      case ".":
+        setMemory(parseFloat(value));
+        setValue("0");
+        break;
+    }
   };
 
   return (
