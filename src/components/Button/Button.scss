@@ -5,7 +5,7 @@
   @include size(110px, 110px);
 
   background: #333;
-
+  color: white;
   border-radius: 50%;
   font-size: 45px;
   cursor: pointer;
@@ -18,5 +18,12 @@
     position: relative;
     justify-content: flex-start;
     padding-left: 43px;
+  }
+  &.function {
+    color: black;
+    background: #a5a5a5;
+  }
+  &.operator {
+    background: #f1a33c;
   }
 }
