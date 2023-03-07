@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
+import menu from "../../assets/menu.png";
+import commafy from "./../../utils/commafy";
 import "./App.scss";
 
 const App = () => {
+  const [time, setTime] = useState<any>(new Date());
   const [value, setValue] = useState<string>("0");
   const [memory, setMemory] = useState<number | null>(null);
   const [operator, setOperator] = useState<string | null>(null);
 
+  useEffect(() => {
+    setTime(new Date());
+  }, [new Date().getMinutes()]);
   const handleButtonPress = (content: string) => () => {
     const num = parseFloat(value);
 
@@ -137,8 +143,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="top">17:38</div>
-      <div className="display">{value}</div>
+      <div className="top">
+        <div className="time">
+          {time.getHours()}:{time.getMinutes().toString().padStart(2, "0")}
+        </div>
+        <div className="menu">
+          <img src={menu} alt="menu" />
+        </div>
+      </div>
+      <div className="display">{commafy(value)}</div>
       <div className="buttons">
         <Button
           onButtonClick={handleButtonPress}

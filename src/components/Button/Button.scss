@@ -10,7 +10,10 @@
   font-size: 45px;
   cursor: pointer;
   transition: filter 0.3s ease-in;
-
+  &:active,
+  :focus {
+    filter: brightness(160%);
+  }
   &.zero {
     width: 250px;
     grid-column: 1 / span 2;
@@ -22,9 +25,14 @@
   &.function {
     color: black;
     background: #a5a5a5;
+    font-weight: 400;
   }
   &.operator {
     background: #f1a33c;
     font-size: 55px;
+    &:active,
+    :focus {
+      filter: brightness(120%);
+    }
   }
 }
