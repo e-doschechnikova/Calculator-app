@@ -22,7 +22,6 @@ const App = () => {
         break;
       case "±":
         setValue((num * -1).toString());
-        setOperator("+");
         break;
       case "%":
         setValue((num / 100).toString());
@@ -31,22 +30,77 @@ const App = () => {
         break;
       // operator
       case "÷":
+        if (operator === "+") {
+          setValue((memory! + parseFloat(value)).toString());
+        } else if (operator === "−") {
+          setValue((memory! - parseFloat(value)).toString()); // TODO: fix ?????
+        } else if (operator === "×") {
+          setValue((memory! * parseFloat(value)).toString());
+        } else if (operator === "÷") {
+          setValue((memory! / parseFloat(value)).toString());
+        }
         setMemory(parseFloat(value));
         setValue("0");
+        setOperator("÷");
         break;
       case "×":
+        if (operator === "+") {
+          setValue((memory! + parseFloat(value)).toString());
+        } else if (operator === "−") {
+          setValue((memory! - parseFloat(value)).toString()); // TODO: fix ?????
+        } else if (operator === "×") {
+          setValue((memory! * parseFloat(value)).toString());
+        } else if (operator === "÷") {
+          setValue((memory! / parseFloat(value)).toString());
+        }
         setMemory(parseFloat(value));
         setValue("0");
+        setOperator("×");
         break;
       case "−":
+        if (operator === "+") {
+          setValue((memory! + parseFloat(value)).toString());
+        } else if (operator === "−") {
+          setValue((memory! - parseFloat(value)).toString()); // TODO: fix ?????
+        } else if (operator === "×") {
+          setValue((memory! * parseFloat(value)).toString());
+        } else if (operator === "÷") {
+          setValue((memory! / parseFloat(value)).toString());
+        }
         setMemory(parseFloat(value));
         setValue("0");
+        setOperator("−");
         break;
       case "+":
-        setMemory(parseFloat(value));
+        if (operator !== null) {
+          if (operator === "+") {
+            setMemory(memory! + parseFloat(value));
+          } else if (operator === "−") {
+            setMemory(memory! - parseFloat(value)); // TODO: fix ?????
+          } else if (operator === "×") {
+            setMemory(memory! * parseFloat(value));
+          } else if (operator === "÷") {
+            setMemory(memory! / parseFloat(value));
+          }
+        } else {
+          setMemory(parseFloat(value));
+        }
         setValue("0");
+        setOperator("+");
         break;
+
       case "=":
+        if (!operator) return;
+
+        if (operator === "+") {
+          setValue((memory! + parseFloat(value)).toString());
+        } else if (operator === "−") {
+          setValue((memory! - parseFloat(value)).toString()); // TODO: fix ?????
+        } else if (operator === "×") {
+          setValue((memory! * parseFloat(value)).toString());
+        } else if (operator === "÷") {
+          setValue((memory! / parseFloat(value)).toString());
+        }
         setMemory(null);
         setOperator(null);
         break;
